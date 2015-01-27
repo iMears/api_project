@@ -46,9 +46,9 @@ configure do
 
   # OmniAuth.config.test_mode = true
 
-  use OmniAuth::Builder do
-    provider :facebook, ENV['APP_ID'], ENV['APP_SECRET'], :scope => 'email,read_stream'
-  end
+  # use OmniAuth::Builder do
+  #   provider :facebook, ENV['APP_ID'], ENV['APP_SECRET'], :scope => 'email,read_stream'
+  # end
 
   # Set the views to
   set :views, File.join(Sinatra::Application.root, "app", "views")
