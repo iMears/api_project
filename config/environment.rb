@@ -20,7 +20,7 @@ require "sinatra/reloader" if development?
 require 'erb'
 
 require 'bcrypt'
-require 'omniauth-facebook'
+# require 'omniauth-facebook'
 require 'json'
 require 'rest-client'
 require 'httparty'
