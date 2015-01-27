@@ -1,0 +1,28 @@
+<h1>&lt/EndPoint&gt</h1>
+<div class="error-messages"><%= @session_error %><div>
+<div class="row">
+  <div class="col-md-2 col-md-offset-5">
+    <form class="form-inline" action="/session" method="post">
+      <div class="form-group">
+        <label class="sr-only" name="input[email]" for="exampleInputEmail2">Email address</label>
+        <input type="email" name="input[email]" class="form-control" id="exampleInputEmail2" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <label class="sr-only" name="input[password]" for="exampleInputPassword2">Password</label>
+        <input type="password" name="input[password]" class="form-control" id="exampleInputPassword2" placeholder="Password">
+      </div>
+
+    <div class="signup-area">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Remember me
+        </label>
+      </div>
+        <div class="signup-area">
+        <button type="submit" class="btn btn-danger center-button">Login</button>
+        <a href="/users/new">sign up</a>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>

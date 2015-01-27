@@ -1,0 +1,47 @@
+body {
+  font-family: 'Montserrat', sans-serif !important;
+  /*font-family: 'Orbitron', sans-serif !important;*/
+
+}
+
+h1, h2, h3, h4 {
+  text-align: center;
+  color: gray !important;
+  margin-bottom: 20px !important;
+}
+
+h1 {
+  color: gray !important;
+  padding-top: 50px;
+  font-family: 'Orbitron', sans-serif !important;
+}
+
+.signup-area {
+  margin: 20px;
+}
+
+.center-button {
+  position: relative;
+  min-width: 100%;
+}
+
+.error-messages {
+  color: red;
+  text-align: center !important;
+}
+
+label {
+  color: black;
+}
+
+#hidden-weather {
+  display: none;
+}
+
+#yoda-form {
+  display: none;
+}
+
+#center-state-time {
+  color: gray;
+}

@@ -1,0 +1,45 @@
+<h1>&lt/EndPoint&gt</h1>
+<h4>Hello <%= @user.first_name %>.</h4>
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-5">
+    <form class="form-inline" action="/user/profile_page" method="get">
+      <div class="form-group">
+      </div>
+      <div class="signup-area">
+          <button id="weather" class="btn btn-info center-button">Weather</button>
+      </div>
+      <div id="hidden-weather">
+        <table class="table">
+          <tr>
+          <th id="center-state-time"><%= @user.city %>, <%= @user.state %> - <%= DateTime.now.strftime("%I:%M%p") %></th>
+            <td><%= @weather_html %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="signup-area">
+          <button id="yoda-speak-btn" class="btn btn-success center-button">Yoda Speak</button>
+      </div>
+      <div id="yoda-form">
+        <div class="signup-area">
+          <form action="/yoda" method="post">
+            <div class="alert alert-success" role="alert">
+              <p id="yoda-output"></p>
+            </div>
+            <input id='yoda-input' type="text" class="form-control center-button" name="sentense" placeholder="Enter text...">
+            <button id="yoda-submit" type="submit" class="btn btn-success center-button">Convert it!</button>
+          </form>
+        </div>
+      </div>
+      <div class="signup-area">
+          <button class="btn btn-warning center-button">Google Search</button>
+      </div>
+      <div class="signup-area">
+          <button class="btn btn-primary center-button">Top Stocks</button>
+      </div>
+      <div class="signup-area">
+          <button class="btn btn-danger center-button">Local News</button>
+      </div>
+    </form>
+  </div>
+</div>
