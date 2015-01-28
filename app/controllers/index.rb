@@ -33,22 +33,17 @@ get '/users/:email' do
     info_item = w[1]
     @weather_html << "<tr><td>#{title_tag.capitalize.gsub('_', ' ')}</td><td>#{info_item}</td></tr>"
   end
-
-  # @yoda = Unirest.get "https://yoda.p.mashape.com/yoda?sentence=You+will+learn+how+to+speak+like+me+someday.++Oh+wait.",
-  # headers:{
-  #   "X-Mashape-Key" => "W5392mrRbOmshPj4Ks371v6EauPrp1Zy0PPjsn8jLWQD9iIQmr",
-  #   "Accept" => "text/plain"
-  # }
-  # p @yoda.raw_body
   erb :"user/profile_page"
 end
 
 
-get '/yoda' do
-  @yoda = Unirest.get("https://yoda.p.mashape.com/yoda?sentence=You+will+learn+how+to+speak+like+me+someday.++Oh+wait.",
+post '/yoda' do
+  sentense = params[:sentense].gsub(' ', '+')
+  p sentense
+  @yoda = Unirest.get("https://yoda.p.mashape.com/yoda?sentence=#{sentense}",
   headers:{
-    "X-Mashape-Key" => "W5392mrRbOmshPj4Ks371v6EauPrp1Zy0PPjsn8jLWQD9iIQmr",
+    "X-Mashape-Key" => "ewubvbYeAwmshbnQGBHMB8OcydLQp1ybYB9jsne960YNhIHF86",
     "Accept" => "text/plain"
   })
-  @yoda.body
+  p @yoda.body
 end

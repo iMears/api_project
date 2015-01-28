@@ -19,24 +19,17 @@ function bindSubmitEvent() {
   $('#yoda-submit').on('click', function(event) {
     event.preventDefault();
     var $this = $(this);
-    var data = $this.serialize();
-    console.log("$this is " + $this);
-    console.log("$this.serialize() is " + data);
+    var data = $('#yoda-convert').serialize();
     var request = $.ajax({
       url: '/yoda',
       data: data,
-      method: 'GET'
+      method: 'POST'
     });
 
     request.done(function(response) {
-      addYodaString(JSON.parse(response));
-      $this.find('#yoda-string').val('');
-    });
-
-    request.fail(function(response) {
-      console.log("it failed!");
-      $('#yoda-string').text(response);
-      $this.find('#yoda-input').val('');
+      console.log(response);
+      $('#yoda-output').text(response);
+      $this.find('#yoda-input').val('testing');
     });
   });
 }
