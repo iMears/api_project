@@ -18,7 +18,6 @@ function bindClickEvents() {
 function bindSubmitEvent() {
   $('#yoda-submit').on('click', function(event) {
     event.preventDefault();
-    var $this = $(this);
     var data = $('#yoda-convert').serialize();
     var request = $.ajax({
       url: '/yoda',
@@ -27,9 +26,8 @@ function bindSubmitEvent() {
     });
 
     request.done(function(response) {
-      console.log(response);
       $('#yoda-output').text(response);
-      $this.find('#yoda-input').val('testing');
+      this.find('#yoda-input').val('');
     });
   });
 }
