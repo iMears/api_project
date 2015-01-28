@@ -40,21 +40,29 @@ post '/yoda' do
   sentense = params[:sentense].gsub(' ', '+')
   @yoda = Unirest.get("https://yoda.p.mashape.com/yoda?sentence=#{sentense}",
   headers:{
-    "X-Mashape-Key" => "ewubvbYeAwmshbnQGBHMB8OcydLQp1ybYB9jsne960YNhIHF86",
+    "X-Mashape-Key" => ENV['YODA_API_KEY'],
     "Accept" => "text/plain"
   })
+
+  account_sid = ENV['ACCOUNT_SID']
+  auth_token = ENV['AUTH_TOKEN']
+  @client = Twilio::REST::Client.new(account_sid, auth_token)
+  @client.account.messages.create({
+    :from => '+14103178088',
+    :to => '7757426305',
+    :body => params[:sentense],
+  })
+
   @yoda.body
 end
 
 post '/stocks' do
-
   data = YahooFinance.quotes(["#{params[:symbol]}"], [:last_trade_price, :days_range, :high_52_weeks, :low_52_weeks])
   output = []
   output << "Last Trade Price: #{data[0].last_trade_price}\n"
   output << "Days Range: #{data[0].days_range}\n"
   output << "High 52 Week #{data[0].high_52_weeks}\n"
   output << "Low 52 week #{data[0].low_52_weeks}\n"
-
   output
 end
 

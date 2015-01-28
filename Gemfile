@@ -21,6 +21,8 @@ gem 'rest-client'
 gem 'httparty'
 gem 'unirest'
 gem 'yahoo-finance'
+gem 'twilio-ruby'
+gem 'dotenv'
 
 group :test do
   gem 'shoulda-matchers'
