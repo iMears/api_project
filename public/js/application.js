@@ -22,11 +22,9 @@ function bindSubmitEvent() {
     var data = $this.serialize();
     console.log("$this is " + $this);
     console.log("$this.serialize() is " + data);
-    var key = "W5392mrRbOmshPj4Ks371v6EauPrp1Zy0PPjsn8jLWQD9iIQmr";
     var request = $.ajax({
-      url: 'https://yoda.p.mashape.com/yoda',
+      url: '/yoda',
       data: data,
-      headers: { 'X-Mashape-Key': key },
       method: 'GET'
     });
 

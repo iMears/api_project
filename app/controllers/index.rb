@@ -42,3 +42,13 @@ get '/users/:email' do
   # p @yoda.raw_body
   erb :"user/profile_page"
 end
+
+
+get '/yoda' do
+  @yoda = Unirest.get("https://yoda.p.mashape.com/yoda?sentence=You+will+learn+how+to+speak+like+me+someday.++Oh+wait.",
+  headers:{
+    "X-Mashape-Key" => "W5392mrRbOmshPj4Ks371v6EauPrp1Zy0PPjsn8jLWQD9iIQmr",
+    "Accept" => "text/plain"
+  })
+  @yoda.body
+end
