@@ -50,9 +50,8 @@ post '/yoda' do
   @client.account.messages.create({
     :from => '+14103178088',
     :to => '7757426305',
-    :body => params[:sentense],
+    :body => @yoda.body,
   })
-
   @yoda.body
 end
 

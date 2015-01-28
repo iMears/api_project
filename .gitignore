@@ -6,4 +6,4 @@
 *.sass-cache
 /pkg
 /doc/api
-.env
+.ENV
