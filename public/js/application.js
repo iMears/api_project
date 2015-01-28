@@ -1,5 +1,6 @@
 $(document).ready(function() {
-  bindSubmitEvent();
+  yodaSubmitEvent();
+  stockSubmitEvent();
   bindClickEvents();
 });
 
@@ -13,9 +14,20 @@ function bindClickEvents() {
     e.preventDefault();
     $('#yoda-form').toggle("slow");
   });
+
+  $('#stock-activate-btn').on('click', function(e) {
+    e.preventDefault();
+    $('#stock-form').toggle("slow");
+  });
+
+
+  $('#game-activate-btn').on('click', function(e) {
+    e.preventDefault();
+    $('#game-form').toggle("slow");
+  });
 }
 
-function bindSubmitEvent() {
+function yodaSubmitEvent() {
   $('#yoda-submit').on('click', function(event) {
     event.preventDefault();
     var data = $('#yoda-convert').serialize();
@@ -28,6 +40,24 @@ function bindSubmitEvent() {
     request.done(function(response) {
       $('#yoda-output').text(response);
       this.find('#yoda-input').val('');
+    });
+  });
+}
+
+function stockSubmitEvent() {
+  $('#stock-submit').on('click', function(event) {
+    event.preventDefault();
+    var data = $('#stock-convert').serialize();
+    var stock_request = $.ajax({
+      url: '/stocks',
+      data: data,
+      method: 'POST'
+    });
+
+    stock_request.done(function(response) {
+      console.log('hhhhhhererererer')
+      $('#stock-output').text(response);
+      this.find('#stock-input').val('');
     });
   });
 }

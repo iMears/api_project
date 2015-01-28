@@ -1,0 +1,35 @@
+body {
+  background-image:  url("/imgs/sea.png");
+}
+
+#board {
+  position: relative;
+  margin: 200px auto;
+  border-right: 3px dashed red;
+  width: 640px;
+  height: 480px;
+}
+
+#sub1 {
+  position: absolute;
+  top: 120px;
+  left: 0px;
+  -webkit-transition: 0.1s; /* For Safari 3.1 to 6.0 */
+  transition: 0.1s
+}
+
+#sub2 {
+  position: absolute;
+  top: 220px;
+  left: 0px;
+  -webkit-transition: 0.1s; /* For Safari 3.1 to 6.0 */
+  transition: 0.1s
+}
+
+#reset {
+  position: fixed;
+  left: 100px;
+  top: 60px;
+  background-color: white;
+  border-radius: 50%
+}

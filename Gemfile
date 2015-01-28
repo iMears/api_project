@@ -20,6 +20,7 @@ gem 'json'
 gem 'rest-client'
 gem 'httparty'
 gem 'unirest'
+gem 'yahoo-finance'
 
 group :test do
   gem 'shoulda-matchers'

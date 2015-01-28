@@ -1,7 +1,5 @@
 body {
   font-family: 'Montserrat', sans-serif !important;
-  /*font-family: 'Orbitron', sans-serif !important;*/
-
 }
 
 h1, h2, h3, h4 {
@@ -17,7 +15,7 @@ h1 {
 }
 
 .signup-area {
-  margin: 20px;
+  margin-top: 25px;
 }
 
 .center-button {
@@ -34,11 +32,7 @@ label {
   color: black;
 }
 
-#hidden-weather {
-  display: none;
-}
-
-#yoda-form {
+#yoda-form, #stock-form, #hidden-weather, #game-form {
   display: none;
 }
 

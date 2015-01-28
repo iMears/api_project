@@ -7,42 +7,56 @@
       <div class="form-group">
       </div>
       <div class="signup-area">
-          <button id="weather" class="btn btn-info center-button">Weather</button>
+        <button id="weather" class="btn btn-info center-button">Weather</button>
       </div>
       <div id="hidden-weather">
         <table class="table">
           <tr>
-          <th id="center-state-time"><%= @user.city %>, <%= @user.state %> - <%= DateTime.now.strftime("%I:%M%p") %></th>
+            <th id="center-state-time"><%= @user.city %>, <%= @user.state %> - <%= DateTime.now.strftime("%I:%M%p") %></th>
             <td><%= @weather_html %></td>
           </tr>
         </table>
       </div>
-      <div class="signup-area">
-          <button id="yoda-speak-btn" class="btn btn-success center-button">Yoda Speak</button>
-      </div>
     </form>
+    <div class="signup-area">
+      <button id="yoda-speak-btn" class="btn btn-success center-button">Yoda Speak</button>
       <div id="yoda-form">
         <div class="signup-area">
           <form id="yoda-convert" action="/yoda" method="post">
             <div class="alert alert-success" role="alert">
               <p id="yoda-output"></p>
             </div>
-            <input id='yoda-input' type="text" class="form-control center-button" name="sentense" placeholder="Enter text...">
-            <button id="yoda-submit" type="submit" class="btn btn-success center-button">Convert it!</button>
+            <input id='yoda-input' type="text" class="form-control center-button" name="sentense" placeholder="Enter Phrase...">
+            <button id="yoda-submit" type="submit" class="btn btn-default center-button">Convert it!</button>
           </form>
         </div>
       </div>
-      <div class="signup-area">
-          <button class="btn btn-warning center-button">Google Search</button>
+    </div>
+    <div class="signup-area">
+      <button id="stock-activate-btn" class="btn btn-primary center-button">Stock Update</button>
+      <div id="stock-form">
+        <div class="signup-area">
+          <form id="stock-convert" action="/stocks" method="post">
+            <div class="alert alert-primary" role="alert">
+              <p id="stock-output"></p>
+            </div>
+            <input id='stock-input' type="text" class="form-control center-button" name="symbol" placeholder="Enter Symbol...">
+            <button id="stock-submit" type="submit" class="btn btn-default center-button">Show!</button>
+          </form>
+        </div>
       </div>
-      <div class="signup-area">
-          <button class="btn btn-primary center-button">Top Stocks</button>
+    </div>
+    <div class="signup-area">
+      <button id="game-activate-btn" class="btn btn-warning center-button">Games</button>
+      <div id="game-form">
+        <div class="signup-area">
+          <a href='/games/super_starfish'><button id="game-submit" class="btn btn-default center-button">SuperStarFish</button></a>
+          <a href='/games/superSubmarine'><button id="game-submit" class="btn btn-default center-button">SuperSubmarine</button></a>
+        </div>
       </div>
-      <div class="signup-area">
-          <button class="btn btn-danger center-button">Local News</button>
-      </div>
-
-      <form>
-    </form>
+    </div>
+    <div class="signup-area">
+      <button class="btn btn-danger center-button">Local News</button>
+    </div>
   </div>
 </div>

@@ -36,14 +36,32 @@ get '/users/:email' do
   erb :"user/profile_page"
 end
 
-
 post '/yoda' do
   sentense = params[:sentense].gsub(' ', '+')
-  p sentense
   @yoda = Unirest.get("https://yoda.p.mashape.com/yoda?sentence=#{sentense}",
   headers:{
     "X-Mashape-Key" => "ewubvbYeAwmshbnQGBHMB8OcydLQp1ybYB9jsne960YNhIHF86",
     "Accept" => "text/plain"
   })
-  p @yoda.body
+  @yoda.body
+end
+
+post '/stocks' do
+
+  data = YahooFinance.quotes(["#{params[:symbol]}"], [:last_trade_price, :days_range, :high_52_weeks, :low_52_weeks])
+  output = []
+  output << "Last Trade Price: #{data[0].last_trade_price}\n"
+  output << "Days Range: #{data[0].days_range}\n"
+  output << "High 52 Week #{data[0].high_52_weeks}\n"
+  output << "Low 52 week #{data[0].low_52_weeks}\n"
+
+  output
+end
+
+get '/games/super_starfish' do
+  erb :"games/super_starfish", layout: false
+end
+
+get '/games/superSubmarine' do
+  erb :"games/super_submarine", layout: false
 end

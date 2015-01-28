@@ -1,0 +1,99 @@
+body{
+  background: #434343;
+  background-image: url("/imgs/space.jpeg");
+
+}
+
+p{
+  color: white;
+  max-width: 45%;
+  margin: 50px auto;
+  font-family: 'Audiowide', cursive;
+  text-align: center;
+  line-height: 1.5em;
+}
+
+#title{
+  font-size: 1.5em;
+}
+
+#map{
+  width: 640px;
+  height: 480px;
+  border: 2px solid white;
+  margin: 0 auto;
+  background: black;
+  position: relative;
+}
+
+#starfish{
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 40px;
+  top: 200px;
+  -webkit-transition: 0.4s; /* For Safari 3.1 to 6.0 */
+  transition: 0.4s;
+}
+
+.alien{
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  -webkit-transition: 0.4s, opacity 1s, transform 1s; /* For Safari 3.1 to 6.0 */
+  transition: 0.4s, opacity 1s, transform 1s;
+}
+
+#alien{
+  left: 560px;
+  top: 80px;
+}
+
+#alien2{
+  left: 560px;
+  top: 200px;
+}
+
+#alien3{
+  left: 560px;
+  top: 320px;
+}
+
+.button {
+  width: 75px;
+  height: 75px;
+  border: 2px solid white;
+  display: inline-block;
+  margin: 6%;
+  background: black;
+}
+
+#controller{
+  width: 640px;
+  height: 105px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.arrows{
+  position: relative;
+  left: 8%;
+  top: 7%;
+}
+
+
+#thanks{
+  position: relative;
+  width: 100%;
+ /* font-size: 0.8em;*/
+  text-decoration: none;
+  color: red;
+}
+
+#twitter{
+  width: 20px;
+  left: 5px;
+  top: 5px;
+  position: relative;
+}
+
