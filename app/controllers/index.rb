@@ -1,12 +1,18 @@
-get '/auth/:facebook' do
-  @user = User.find_or_create_from_auth_hash(request.env['omniauth.auth'])
-  self.current_user = @user
-  puts(OmniAuth.config.logger)
-  redirect_to '/'
-end
-
 get '/auth/:facebook/callback' do
-  erb :login
+  info = request.env['omniauth.auth']['info']
+  email = info['email']
+  @user = User.find_by_email(email)
+  unless @user
+    @user = User.create!(first_name: info['first_name'],
+                         last_name: info['last_name'],
+                         city: 'San Jose',
+                         state: 'CA',
+                         password_hash: 'X',
+                         phone_number: '999-999-9999',
+                         email: info['email'])
+  end
+  session_set_current_user @user
+  redirect to "/users/#{@user.email}"
 end
 
 get '/' do

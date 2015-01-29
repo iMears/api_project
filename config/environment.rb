@@ -7,14 +7,11 @@ require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
 
 # Require gems we care about
 require 'rubygems'
-
 require 'uri'
 require 'pathname'
-
 require 'pg'
 require 'active_record'
 require 'logger'
-
 require 'sinatra'
 require "sinatra/reloader" if development?
 require 'erb'
@@ -58,6 +55,7 @@ configure do
 
 
   use Rack::Session::Cookie, :secret => 'abc123'
+
   # OmniAuth.config.test_mode = true
   use OmniAuth::Builder do
     provider :facebook, ENV['FB_APP_ID'], ENV['FB_APP_SECRET'], :scope => 'email,read_stream'
