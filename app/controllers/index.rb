@@ -36,6 +36,7 @@ end
 
 get '/users/:email' do
   @user = User.find_by(email: params[:email])
+  session[:phone_number] = @user.phone_number
   response = RestClient.get "http://api.openweathermap.org/data/2.5/weather?q=#{@user.city.gsub(' ', '_')},#{@user.state}&units=imperial"
   parsed_data = JSON.parse(response)
   @weather_html = ''
@@ -54,13 +55,13 @@ post '/yoda' do
     "X-Mashape-Key" => ENV['YODA_API_KEY'],
     "Accept" => "text/plain"
   })
-
+  p session[:phone_number]
   account_sid = ENV['ACCOUNT_SID']
   auth_token = ENV['AUTH_TOKEN']
   @client = Twilio::REST::Client.new(account_sid, auth_token)
   @client.account.messages.create({
     :from => '+14103178088',
-    :to => '7757426305',
+    :to => "#{session[:phone_number]}",
     :body => @yoda.body,
   })
   @yoda.body
