@@ -28,14 +28,14 @@ require 'twilio-ruby'
 require 'dotenv'
 # require 'hirb'
 
-if $0 == 'irb'
-  Hirb.enable
-  Hirb::View.resize
-end
+# if $0 == 'irb'
+#   Hirb.enable
+#   Hirb::View.resize
+# end
 
-def resize
-  Hirb::View.resize
-end
+# def resize
+#   Hirb::View.resize
+# end
 
 Dotenv.load
 
