@@ -43,7 +43,6 @@ GEM
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     hashie (3.3.2)
-    hirb (0.7.2)
     httparty (0.13.3)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -137,7 +136,6 @@ DEPENDENCIES
   dotenv
   factory_girl
   faker
-  hirb
   httparty
   json
   omniauth-facebook

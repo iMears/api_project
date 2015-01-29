@@ -36,6 +36,7 @@ function yodaSubmitEvent() {
   $('#yoda-submit').on('click', function(event) {
     event.preventDefault();
     var data = $('#yoda-convert').serialize();
+    console.log(data);
     var request = $.ajax({
       url: '/yoda',
       data: data,

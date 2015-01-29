@@ -48,8 +48,8 @@ get '/users/:email' do
 end
 
 post '/yoda' do
-  sentense = params[:sentense].gsub(' ', '+')
-  @yoda = Unirest.get("https://yoda.p.mashape.com/yoda?sentence=#{sentense}",
+  sentence = params[:sentence].gsub(' ', '+')
+  @yoda = Unirest.get("https://yoda.p.mashape.com/yoda?sentence=#{sentence}",
   headers:{
     "X-Mashape-Key" => ENV['YODA_API_KEY'],
     "Accept" => "text/plain"
