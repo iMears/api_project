@@ -37,9 +37,9 @@ end
 get '/users/:email' do
   @user = User.find_by(email: params[:email])
   response = RestClient.get "http://api.openweathermap.org/data/2.5/weather?q=#{@user.city.gsub(' ', '_')},#{@user.state}&units=imperial"
-  json_hash = JSON.parse(response)
+  parsed_data = JSON.parse(response)
   @weather_html = ''
-  json_hash['main'].each do |w|
+  parsed_data['main'].each do |w|
     title_tag = w[0]
     info_item = w[1]
     @weather_html << "<tr><td>#{title_tag.capitalize.gsub('_', ' ')}</td><td>#{info_item}</td></tr>"
@@ -67,16 +67,18 @@ post '/yoda' do
 end
 
 post '/stocks' do
-  data = YahooFinance.quotes(["#{params[:symbol]}"], [:last_trade_price,
-                                                      :days_range,
-                                                      :high_52_weeks,
-                                                      :low_52_weeks])
-  output = []
-  output << "Last Trade Price: #{data[0].last_trade_price}"
-  output << "Days Range: #{data[0].days_range}"
-  output << "High 52 Week #{data[0].high_52_weeks}"
-  output << "Low 52 week #{data[0].low_52_weeks}"
-  output
+  if params[:symbol] != ''
+    data = YahooFinance.quotes(["#{params[:symbol]}"], [:last_trade_price,
+                                                        :days_range,
+                                                        :high_52_weeks,
+                                                        :low_52_weeks])
+    output = ''
+    output << "<tr><td>Last Trade Price:</td><td>$#{data[0].last_trade_price}</td></tr>"
+    output << "<tr><td>Days Range:</td><td>$#{data[0].days_range}</td></tr>"
+    output << "<tr><td>High 52 Week:</td><td>$#{data[0].high_52_weeks}</td></tr>"
+    output << "<tr><td>Low 52 week:</td><td>$#{data[0].low_52_weeks}</td></tr>"
+    output
+  end
 end
 
 post '/spellcheck' do

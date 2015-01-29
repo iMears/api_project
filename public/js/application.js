@@ -61,9 +61,9 @@ function stockSubmitEvent() {
     });
 
     stock_request.done(function(response) {
-      console.log(response)
+      console.log(response);
       // var parsed_data = JSON.parse(response);
-      $('#stock-output').text(response);
+      $('#stock-output').append(response);
       $('#stock-input').val('');
     });
   });
