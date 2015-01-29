@@ -67,13 +67,26 @@ post '/yoda' do
 end
 
 post '/stocks' do
-  data = YahooFinance.quotes(["#{params[:symbol]}"], [:last_trade_price, :days_range, :high_52_weeks, :low_52_weeks])
+  data = YahooFinance.quotes(["#{params[:symbol]}"], [:last_trade_price,
+                                                      :days_range,
+                                                      :high_52_weeks,
+                                                      :low_52_weeks])
   output = []
-  output << "Last Trade Price: #{data[0].last_trade_price}\n"
-  output << "Days Range: #{data[0].days_range}\n"
-  output << "High 52 Week #{data[0].high_52_weeks}\n"
-  output << "Low 52 week #{data[0].low_52_weeks}\n"
+  output << "Last Trade Price: #{data[0].last_trade_price}"
+  output << "Days Range: #{data[0].days_range}"
+  output << "High 52 Week #{data[0].high_52_weeks}"
+  output << "Low 52 week #{data[0].low_52_weeks}"
   output
+end
+
+post '/spellcheck' do
+  spellcheck = params[:spellcheck].gsub(' ', '+')
+  response = HTTParty.get "https://montanaflynn-spellcheck.p.mashape.com/check/?text=#{spellcheck}",
+  headers:{
+    "X-Mashape-Key" => "ewubvbYeAwmshbnQGBHMB8OcydLQp1ybYB9jsne960YNhIHF86",
+    "Accept" => "application/json"
+  }
+  response.to_json
 end
 
 get '/games/super_starfish' do

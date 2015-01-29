@@ -1,6 +1,7 @@
 $(document).ready(function() {
   yodaSubmitEvent();
   stockSubmitEvent();
+  spellcheckSubmitEvent();
   bindClickEvents();
 });
 
@@ -20,10 +21,14 @@ function bindClickEvents() {
     $('#stock-form').toggle("slow");
   });
 
-
   $('#game-activate-btn').on('click', function(e) {
     e.preventDefault();
     $('#game-form').toggle("slow");
+  });
+
+  $('#spellcheck-activate-btn').on('click', function(e) {
+    e.preventDefault();
+    $('#spellcheck-form').toggle("slow");
   });
 }
 
@@ -38,8 +43,9 @@ function yodaSubmitEvent() {
     });
 
     request.done(function(response) {
+      console.log(response)
       $('#yoda-output').text(response);
-      this.find('#yoda-input').val('');
+      $('#yoda-input').val('');
     });
   });
 }
@@ -55,18 +61,29 @@ function stockSubmitEvent() {
     });
 
     stock_request.done(function(response) {
-      console.log('hhhhhhererererer')
+      console.log(response)
+      // var parsed_data = JSON.parse(response);
       $('#stock-output').text(response);
-      this.find('#stock-input').val('');
+      $('#stock-input').val('');
     });
   });
 }
 
-// function bindClickEvent(type, className, cb) {
-//   $('.class').on('click', '.' + className, function() {
-//     var $node = $(this).closest('.class');
-//     var content = $node.find('h2').text();
-//     var url = '/todos/' + content;
-//     $.ajax({ url: url, type: type }).done(cb.bind(this, $node));
-//   });
-// }
+function spellcheckSubmitEvent() {
+  $('#spellcheck-submit').on('click', function(event) {
+    event.preventDefault();
+    var data = $('#spellcheck-convert').serialize();
+    var request = $.ajax({
+      url: '/spellcheck',
+      data: data,
+      method: 'POST'
+    });
+
+    request.done(function(response) {
+      var parsed_data = JSON.parse(response);
+      console.log(response)
+      $('#spellcheck-output').text(parsed_data.suggestion);
+      $('#spellcheck-input').val('');
+    });
+  });
+}

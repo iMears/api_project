@@ -2,12 +2,12 @@
 <h4>Hello <%= @user.first_name %>.</h4>
 
 <div class="row">
-  <div class="col-md-2 col-md-offset-5">
+  <div class="col-md-4 col-md-offset-4">
     <form class="form-inline" action="/user/profile_page" method="get">
       <div class="form-group">
       </div>
       <div class="signup-area">
-        <button id="weather" class="btn btn-info center-button">Weather</button>
+        <button id="weather" class="btn btn-info center-button btn-height">Weather</button>
       </div>
       <div id="hidden-weather">
         <table class="table">
@@ -19,7 +19,7 @@
       </div>
     </form>
     <div class="signup-area">
-      <button id="yoda-speak-btn" class="btn btn-success center-button">Yoda Speak</button>
+      <button id="yoda-speak-btn" class="btn btn-success center-button btn-height">Yoda Speak</button>
       <div id="yoda-form">
         <div class="signup-area">
           <form id="yoda-convert" action="/yoda" method="post">
@@ -27,36 +27,47 @@
               <p id="yoda-output"></p>
             </div>
             <input id='yoda-input' type="text" class="form-control center-button" name="sentense" placeholder="Enter Phrase...">
-            <button id="yoda-submit" type="submit" class="btn btn-default center-button">Convert it!</button>
+            <button id="yoda-submit" type="submit" class="btn btn-success center-button">Convert</button>
           </form>
         </div>
       </div>
     </div>
     <div class="signup-area">
-      <button id="stock-activate-btn" class="btn btn-primary center-button">Stock Update</button>
+      <button id="stock-activate-btn" class="btn btn-primary center-button btn-height">Stocks</button>
       <div id="stock-form">
         <div class="signup-area">
           <form id="stock-convert" action="/stocks" method="post">
-            <div class="alert alert-primary" role="alert">
+            <div class="alert alert-info" role="alert">
               <p id="stock-output"></p>
             </div>
             <input id='stock-input' type="text" class="form-control center-button" name="symbol" placeholder="Enter Symbol...">
-            <button id="stock-submit" type="submit" class="btn btn-default center-button">Show!</button>
+            <button id="stock-submit" type="submit" class="btn btn-primary center-button">Find</button>
           </form>
         </div>
       </div>
     </div>
     <div class="signup-area">
-      <button id="game-activate-btn" class="btn btn-warning center-button">Games</button>
+      <button id="game-activate-btn" class="btn btn-warning center-button btn-height">Games</button>
       <div id="game-form">
         <div class="signup-area">
-          <a href='/games/super_starfish'><button id="game-submit" class="btn btn-default center-button">SuperStarFish</button></a>
-          <a href='/games/superSubmarine'><button id="game-submit" class="btn btn-default center-button">SuperSubmarine</button></a>
+          <a href='/games/super_starfish'><button id="game-submit" class="btn btn-warning center-button">SuperStarFish</button></a>
+          <a href='/games/superSubmarine'><button id="game-submit" class="btn btn-warning center-button">SuperSubmarine</button></a>
         </div>
       </div>
     </div>
     <div class="signup-area">
-      <button class="btn btn-danger center-button">Local News</button>
+      <button id="spellcheck-activate-btn" class="btn btn-danger center-button btn-height">Spellcheck</button>
+      <div id="spellcheck-form">
+        <div class="signup-area">
+          <form id="spellcheck-convert" action="/spellcheck" method="post">
+            <div class="alert alert-danger" role="alert">
+              <p id="spellcheck-output"></p>
+            </div>
+            <input id='spellcheck-input' type="text" class="form-control center-button" name="spellcheck" placeholder="Enter text...">
+            <button id="spellcheck-submit" type="submit" class="btn btn-danger center-button">Check!</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>

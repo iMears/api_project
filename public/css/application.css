@@ -32,7 +32,7 @@ label {
   color: black;
 }
 
-#yoda-form, #stock-form, #hidden-weather, #game-form {
+#yoda-form, #stock-form, #hidden-weather, #game-form, #spellcheck-form {
   display: none;
 }
 
@@ -46,3 +46,10 @@ label {
   font-size: 10px;
 }
 
+.btn-height {
+  height: 60px !important;
+}
+
+.row {
+  margin-bottom: 100px;
+}
