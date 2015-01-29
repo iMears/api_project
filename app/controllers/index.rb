@@ -1,13 +1,17 @@
-# get '/auth/:facebook/callback' do
-#   erb :login
-# end
+get '/auth/:facebook' do
+  p "*" * 80
+  @user = User.find_or_create_from_auth_hash(request.env['omniauth.auth'])
+  self.current_user = @user
+  puts(OmniAuth.config.logger)
+  p "* " * 80
+  redirect_to '/'
+end
 
-# get '/auth/:facebook' do
-#   @user = User.find_or_create_from_auth_hash(request.env['omniauth.auth'])
-#   self.current_user = @user
-#   puts(OmniAuth.config.logger)
-#   redirect_to '/'
-# end
+get '/auth/:facebook/callback' do
+  p "x " * 80
+  erb :login
+end
+
 
 get '/' do
   erb :index
@@ -18,9 +22,14 @@ get '/users/new' do
 end
 
 post '/users' do
-  user = User.create(params[:input])
-  email = user.email
-  redirect to "/users/#{email}"
+  @user = User.new(params[:input])
+
+  if @user.save
+    redirect to "/users/#{@user.email}"
+  else
+    session[:errors] = @user.errors.full_messages
+    erb :'user/signup'
+  end
 end
 
 get '/users/:email' do

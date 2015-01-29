@@ -23,6 +23,7 @@ gem 'unirest'
 gem 'yahoo-finance'
 gem 'twilio-ruby'
 gem 'dotenv'
+gem 'omniauth-facebook'
 
 group :test do
   gem 'shoulda-matchers'
@@ -34,5 +35,5 @@ end
 group :test, :development do
   gem 'factory_girl'
   gem 'faker'
-  # gem 'omniauth-facebook'
+  gem 'hirb'
 end

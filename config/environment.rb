@@ -20,7 +20,7 @@ require "sinatra/reloader" if development?
 require 'erb'
 require 'date'
 require 'bcrypt'
-# require 'omniauth-facebook'
+require 'omniauth-facebook'
 require 'json'
 require 'rest-client'
 require 'httparty'
@@ -29,14 +29,23 @@ require 'yahoo_finance'
 require 'ostruct'
 require 'twilio-ruby'
 require 'dotenv'
+require 'hirb'
+
+if $0 == 'irb'
+  Hirb.enable
+  Hirb::View.resize
+end
+
+def resize
+  Hirb::View.resize
+end
+
 Dotenv.load
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 
 APP_NAME = APP_ROOT.basename.to_s
-ENV['APP_ID'] = "1598730653681766"
-ENV['APP_SECRET'] = "04ba46616a5121a003e44eaf68e6457b"
 
 configure do
   # By default, Sinatra assumes that the root is the file that calls the configure block.
@@ -47,13 +56,12 @@ configure do
 
   set :session_secret, ENV['SESSION_SECRET'] || 'this is a secret shhhhh'
 
-  # use Rack::Session::Cookie, :secret => 'abc123'
 
+  use Rack::Session::Cookie, :secret => 'abc123'
   # OmniAuth.config.test_mode = true
-
-  # use OmniAuth::Builder do
-  #   provider :facebook, ENV['APP_ID'], ENV['APP_SECRET'], :scope => 'email,read_stream'
-  # end
+  use OmniAuth::Builder do
+    provider :facebook, ENV['FB_APP_ID'], ENV['FB_APP_SECRET'], :scope => 'email,read_stream'
+  end
 
   # Set the views to
   set :views, File.join(Sinatra::Application.root, "app", "views")
@@ -65,5 +73,3 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
-
-
