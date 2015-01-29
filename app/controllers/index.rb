@@ -1,17 +1,13 @@
 get '/auth/:facebook' do
-  p "*" * 80
   @user = User.find_or_create_from_auth_hash(request.env['omniauth.auth'])
   self.current_user = @user
   puts(OmniAuth.config.logger)
-  p "* " * 80
   redirect_to '/'
 end
 
 get '/auth/:facebook/callback' do
-  p "x " * 80
   erb :login
 end
-
 
 get '/' do
   erb :index

@@ -1,45 +1,38 @@
 <h1>&lt/theEndPoint&gt</h1>
 <div class="row">
   <div class="col-md-2 col-md-offset-5">
-    <% if session[:errors] %>
-      <% session[:errors].each do |error| %>
-       <li><%= error %></li>
+    <div id="validation-errors">
+      <% if session[:errors] %>
+        <% session[:errors].each do |error| %>
+         <li><%= error %></li>
+        <% end %>
       <% end %>
-    <% end %>
-    <% session[:errors] = nil %>
-
+      <% session[:errors] = nil %>
+    </div>
     <form class="form-inline" action="/users" method="post">
       <div class="form-group">
         <label class="sr-only" for="first_name">First name</label>
-        <input type="first_name" name="input[first_name]" class="form-control" id="first_name" placeholder="First name">
+        <input type="first_name" name="input[first_name]" class="form-control" id="first_name" placeholder="First name" value="<%if@user%><%= @user.first_name%><%end%>">
       </div>
       <div class="form-group">
         <label class="sr-only" for="last_name">Last name</label>
         <input type="last_name" name="input[last_name]" class="form-control" id="last_name" placeholder="Last name" value="<%if@user%><%= @user.last_name%><%end%>">
       </div>
       <div class="form-group">
-        <label class="sr-only" for="birthday">Birthday</label>
-        <input type="birthday" name="input[birthday]" class="form-control" id="birthday" placeholder="Birthday">
-      </div>
-      <div class="form-group">
-        <label class="sr-only" for="birthday">Gender</label>
-        <input type="gender" name="input[gender]" class="form-control" id="gender" placeholder="Gender">
-      </div>
-      <div class="form-group">
         <label class="sr-only" for="city">City</label>
-        <input type="city" name="input[city]" class="form-control" id="city" placeholder="City">
+        <input type="city" name="input[city]" class="form-control" id="city" placeholder="City" value="<%if@user%><%= @user.city%><%end%>">
       </div>
       <div class="form-group">
         <label class="sr-only" for="state">State</label>
-        <input type="state" name="input[state]" class="form-control" id="state" placeholder="State">
+        <input type="state" name="input[state]" class="form-control" id="state" placeholder="State" value="<%if@user%><%= @user.state%><%end%>">
       </div>
       <div class="form-group">
         <label class="sr-only" for="phone_number">Phone Number</label>
-        <input type="phone_number" name="input[phone_number]" class="form-control" id="phone_number" placeholder="phone_number">
+        <input type="phone_number" name="input[phone_number]" class="form-control" id="phone_number" placeholder="Phone Number" value="<%if@user%><%= @user.phone_number%><%end%>">
       </div>
       <div class="form-group">
         <label class="sr-only" for="email">Email address</label>
-        <input type="email" name="input[email]" class="form-control" id="email" placeholder="Email">
+        <input type="email" name="input[email]" class="form-control" id="email" placeholder="Email" value="<%if@user%><%= @user.email%><%end%>">
       </div>
       <div class="form-group">
         <label class="sr-only" for="password">Password</label>

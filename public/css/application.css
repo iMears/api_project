@@ -39,7 +39,10 @@ label {
 #center-state-time {
   color: gray;
 }
-/*
-#nav-color {
-  background-color: danger;
-}*/
+
+#validation-errors {
+  color: red;
+  list-style: none;
+  font-size: 10px;
+}
+
