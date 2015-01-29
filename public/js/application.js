@@ -43,7 +43,7 @@ function yodaSubmitEvent() {
     });
 
     request.done(function(response) {
-      console.log(response)
+      console.log(response);
       $('#yoda-output').text(response);
       $('#yoda-input').val('');
     });
@@ -81,7 +81,7 @@ function spellcheckSubmitEvent() {
 
     request.done(function(response) {
       var parsed_data = JSON.parse(response);
-      console.log(response)
+      console.log(response);
       $('#spellcheck-output').text(parsed_data.suggestion);
       $('#spellcheck-input').val('');
     });

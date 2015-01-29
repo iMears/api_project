@@ -26,7 +26,7 @@ require 'yahoo_finance'
 require 'ostruct'
 require 'twilio-ruby'
 require 'dotenv'
-require 'hirb'
+# require 'hirb'
 
 if $0 == 'irb'
   Hirb.enable
