@@ -46,7 +46,7 @@ function yodaSubmitEvent() {
 
     request.done(function(response) {
       console.log(response);
-      $('#yoda-convert').find('.alert').slideDown().delay(5000).slideUp();
+      $('#yoda-convert').find('.alert').slideDown();
       $('#yoda-output').text(response);
       $('#yoda-input').val('');
       $btn.button('reset');
@@ -67,13 +67,15 @@ function stockSubmitEvent() {
 
     stock_request.done(function(response) {
       console.log(response);
-      $('#stock-convert').find('.alert').slideDown().delay(5000).slideUp();
+      $('#stock-convert').find('.alert').slideDown();
       $('#stock-output').append(response);
       $('#stock-input').val('');
       $btn.button('reset');
     });
   });
 }
+
+setInterval(function_name, time);
 
 function spellcheckSubmitEvent() {
   $('#spellcheck-submit').on('click', function(event) {
@@ -89,7 +91,7 @@ function spellcheckSubmitEvent() {
     request.done(function(response) {
       var parsed_data = JSON.parse(response);
       console.log(response);
-      $('#spellcheck-convert').find('.alert').slideDown().delay(5000).slideUp();
+      $('#spellcheck-convert').find('.alert').slideDown();
       $('#spellcheck-output').text(parsed_data.suggestion);
       $('#spellcheck-input').val('');
       $btn.button('reset');
