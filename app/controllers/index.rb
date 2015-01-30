@@ -79,6 +79,7 @@ post '/stocks' do
                                                         :high_52_weeks,
                                                         :low_52_weeks])
     output = ''
+    output << "<tr><th>$#{params[:symbol]} - Current Time- #{DateTime.now.strftime("%I:%M%p")} </th></tr>"
     output << "<tr><td>Last Trade Price:</td><td>$#{data[0].last_trade_price}</td></tr>"
     output << "<tr><td>Days Range:</td><td>$#{data[0].days_range}</td></tr>"
     output << "<tr><td>High 52 Week:</td><td>$#{data[0].high_52_weeks}</td></tr>"

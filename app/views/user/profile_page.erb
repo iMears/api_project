@@ -9,7 +9,7 @@
       <div class="signup-area">
         <button id="weather" class="btn btn-info center-button btn-height">Weather</button>
       </div>
-      <div id="hidden-weather">
+      <div class="alert alert-info" id="hidden-weather">
         <table class="table">
           <tr>
             <th id="center-state-time"><%= @user.city %>, <%= @user.state %> - <%= DateTime.now.strftime("%I:%M%p") %></th>
@@ -42,7 +42,7 @@
         <div class="signup-area">
           <form id="stock-convert" action="/stocks" method="post">
             <div class="alert alert-info" role="alert">
-              <p id="stock-output"></p>
+              <table class="table" id="stock-output"></table>
             </div>
             <input id='stock-input' type="text" class="form-control center-button" name="symbol" placeholder="Enter Symbol...">
             <button id="stock-submit" type="submit" class="btn btn-primary center-button">Find</button>

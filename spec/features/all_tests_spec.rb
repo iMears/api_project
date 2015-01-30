@@ -41,6 +41,4 @@ describe 'POST /users' do
       expect(User.count).to eq(1)
     end
   end
-
-
 end
