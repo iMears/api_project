@@ -1,3 +1,8 @@
+before do
+  p session
+
+end
+
 get '/auth/:facebook/callback' do
   info = request.env['omniauth.auth']['info']
   email = info['email']

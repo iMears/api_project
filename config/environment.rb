@@ -49,7 +49,7 @@ configure do
   # Since this is not the case for us, we set it manually.
   set :root, APP_ROOT.to_path
   # See: http://www.sinatrarb.com/faq.html#sessions
-  enable :sessions
+  # enable :sessions
 
   set :session_secret, ENV['SESSION_SECRET'] || 'this is a secret shhhhh'
 

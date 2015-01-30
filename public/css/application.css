@@ -32,7 +32,12 @@ label {
   color: black;
 }
 
-#yoda-form, #stock-form, #hidden-weather, #game-form, #spellcheck-form {
+#yoda-form,
+#stock-form,
+#hidden-weather,
+#game-form,
+#spellcheck-form,
+.alert {
   display: none;
 }
 

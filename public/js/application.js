@@ -35,6 +35,7 @@ function bindClickEvents() {
 function yodaSubmitEvent() {
   $('#yoda-submit').on('click', function(event) {
     event.preventDefault();
+    var $btn = $(this).button('loading');
     var data = $('#yoda-convert').serialize();
     console.log(data);
     var request = $.ajax({
@@ -45,8 +46,10 @@ function yodaSubmitEvent() {
 
     request.done(function(response) {
       console.log(response);
+      $('#yoda-convert').find('.alert').slideDown().delay(5000).slideUp();
       $('#yoda-output').text(response);
       $('#yoda-input').val('');
+      $btn.button('reset');
     });
   });
 }
@@ -54,6 +57,7 @@ function yodaSubmitEvent() {
 function stockSubmitEvent() {
   $('#stock-submit').on('click', function(event) {
     event.preventDefault();
+    var $btn = $(this).button('loading');
     var data = $('#stock-convert').serialize();
     var stock_request = $.ajax({
       url: '/stocks',
@@ -63,9 +67,10 @@ function stockSubmitEvent() {
 
     stock_request.done(function(response) {
       console.log(response);
-      // var parsed_data = JSON.parse(response);
+      $('#stock-convert').find('.alert').slideDown().delay(5000).slideUp();
       $('#stock-output').append(response);
       $('#stock-input').val('');
+      $btn.button('reset');
     });
   });
 }
@@ -73,6 +78,7 @@ function stockSubmitEvent() {
 function spellcheckSubmitEvent() {
   $('#spellcheck-submit').on('click', function(event) {
     event.preventDefault();
+    var $btn = $(this).button('loading');
     var data = $('#spellcheck-convert').serialize();
     var request = $.ajax({
       url: '/spellcheck',
@@ -83,8 +89,10 @@ function spellcheckSubmitEvent() {
     request.done(function(response) {
       var parsed_data = JSON.parse(response);
       console.log(response);
+      $('#spellcheck-convert').find('.alert').slideDown().delay(5000).slideUp();
       $('#spellcheck-output').text(parsed_data.suggestion);
       $('#spellcheck-input').val('');
+      $btn.button('reset');
     });
   });
 }
